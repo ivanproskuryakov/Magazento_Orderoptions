@@ -1,0 +1,57 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * @see Mage_Adminhtml_Block_Sales_Items_Column_Name
+ */
+?>
+
+<!-- XXX Custom options: Start -->
+<?php
+$itemId = Mage::app()->getRequest()->getParam('itemid');
+$_item = Mage::getModel('sales/order_item')->load($itemId);
+$options    = $_item->getProductOptions();
+//var_dump($_item->getId());
+//var_dump($options);
+?>
+<div id="order-item-<?php echo $itemId;?>">
+        <h5 class="title"><span id="order_item_<?php echo $_item->getId() ?>_title"><?php echo $this->htmlEscape($_item->getName()) ?></span></h5>
+        <div><strong><?php echo $this->helper('sales')->__('SKU') ?>:</strong> <?php echo implode('<br />',
+                Mage::helper('catalog')->splitSku($this->htmlEscape($_item->getSku()))); ?></div>
+            <dl class="item-options">
+                <?php
+
+                //var_dump($_item->getProductOptions());
+
+                foreach ($_item->getProductOptions()['options'] as $_option): ?>
+                    <dt><?php echo $_option['label'] ?></dt>
+                    <dd><?php echo $_option['value']; ?>
+                    </dd>
+                <?php endforeach; ?>
+            </dl>
+        <?php echo $this->htmlEscape($_item->getDescription()) ?>
+</div>

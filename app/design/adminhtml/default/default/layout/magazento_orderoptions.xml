@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<layout>
+    <orderoptions_admin_item_index>
+        <reference name="content">
+            <block type="core/template"
+                   name='test'
+                   template="magazento_orderoptions/index.phtml">
+            </block>
+        </reference>
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+        </reference>
+    </orderoptions_admin_item_index>
+
+    <adminhtml_sales_order_view>
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+        </reference>
+    </adminhtml_sales_order_view>
+
+    <orderoptions_admin_item_ajaxcontent>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="adminhtml/sales_order_view_items"
+                   name='test'
+                   template="magazento_orderoptions/index.phtml">
+            </block>
+        </block>
+    </orderoptions_admin_item_ajaxcontent>
+
+    <orderoptions_admin_item_content>
+        <update handle="popup"/>
+        <remove name="footer"/>
+    </orderoptions_admin_item_content>
+
+    <orderoptions_admin_item_save>
+        <update handle="popup"/>
+        <reference name="content">
+            <block type="core/template"
+                   name='test'
+                   template="magazento_orderoptions/save.phtml">
+            </block>
+        </reference>
+        <remove name="footer"/>
+    </orderoptions_admin_item_save>
+
+</layout>
