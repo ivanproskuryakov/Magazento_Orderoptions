@@ -6,6 +6,5 @@ Magazento_Orderoptions
 • If changing an order item’s option causes the final order price to change, then this
 option not editable <br/>
 • The modified order updated correctly in both the admin panel and in the customer’s order history in the front-end<br/>
-• Ajax should is used<br/>
 • No modifications for core files (even template or layout files)<br/>
 • Free from other third-party libraries, only built-in Prototype<br/>
